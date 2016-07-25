@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>hello {{ user.name }}!</h1>
+<li>age:{{ user.age }}</li>
+<li>sex:{{ user.sex }}</li>
+<li>say:{{ user.say }}</li>
+
+{% if user.age < 18 %}
+    <li>未成年</li>
+{% else %}
+    <li>成年</li>
+{% endif %}
+
+{% if not user1 %}
+    <li>user1不存在</li>
+{% endif %}
+
+{% for book in book_list reversed%}
+    <li>book:{{ book | upper | lower |capfirst}}</li> {# upper就是一个过滤器  '|'是管道的概念，像linux里面的控制台#}
+{% empty %}
+    <li>没有书籍</li>
+{% endfor %}
+
+{% for key,value in user.items %}
+    <li>{{ key }}:{{ value }}</li>
+{% endfor %}
+
+
+{% load percent %}
+<li>today is : {{ today | date:'Y-m-d' | percent }}</li>  {# date:'Y-m-d'也是一个过滤器 #}
+
+
+
+</body>
+</html>
